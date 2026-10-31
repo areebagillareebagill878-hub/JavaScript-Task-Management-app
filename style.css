@@ -1,0 +1,405 @@
+/* =========================
+   1. CSS VARIABLES
+========================= */
+
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --background: #f3f4f6;
+    --surface: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --success: #15803d;
+    --danger: #dc2626;
+    --radius: 12px;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   2. GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid #a5b4fc;
+    outline-offset: 2px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.container {
+    width: min(100% - 32px, 1000px);
+    margin-inline: auto;
+}
+
+/* =========================
+   3. HEADER
+========================= */
+
+.header {
+    background: linear-gradient(135deg, #312e81, #6366f1);
+    color: white;
+    padding: 35px 0;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+.header p {
+    margin: 8px 0 0;
+    color: #e0e7ff;
+}
+
+/* =========================
+   4. MAIN SECTIONS
+========================= */
+
+.task-form-section,
+.task-controls {
+    background: var(--surface);
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 25px;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.35rem;
+}
+
+/* =========================
+   5. FORMS
+========================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: var(--text);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #9ca3af;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 85px;
+}
+
+/* =========================
+   6. BUTTONS
+========================= */
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+button:hover:not(:disabled) {
+    background: var(--primary-dark);
+}
+
+#cancel-edit {
+    background: #6b7280;
+    margin-left: 8px;
+}
+
+#cancel-edit:hover {
+    background: #4b5563;
+}
+
+#undo-button,
+#redo-button {
+    background: #374151;
+}
+
+#undo-button:hover:not(:disabled),
+#redo-button:hover:not(:disabled) {
+    background: #111827;
+}
+
+/* =========================
+   7. FILTERS AND SEARCH
+========================= */
+
+.control-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.history-controls {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 20px;
+}
+
+#task-summary {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+#app-message {
+    color: var(--success);
+    font-weight: 600;
+}
+
+/* =========================
+   8. TASK LIST
+========================= */
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+}
+
+.task-item {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--primary);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    overflow-wrap: anywhere;
+}
+
+.task-item h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.task-item p {
+    margin: 7px 0;
+}
+
+.task-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.task-actions button {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+}
+
+.task-actions .delete-button {
+    background: var(--danger);
+}
+
+.task-actions .delete-button:hover {
+    background: #991b1b;
+}
+
+.task-actions .complete-button {
+    background: var(--success);
+}
+
+.task-actions .complete-button:hover {
+    background: #166534;
+}
+
+/* =========================
+   9. PRIORITY LABELS
+========================= */
+
+.priority {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.priority-low {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.priority-medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.priority-high {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* =========================
+   10. TASK STATUS
+========================= */
+
+.task-item.completed {
+    border-left-color: var(--success);
+    opacity: 0.85;
+}
+
+.task-item.completed h3 {
+    text-decoration: line-through;
+    color: var(--muted);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 25px;
+    color: var(--muted);
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+}
+
+/* =========================
+   11. SEARCH HIGHLIGHT
+========================= */
+
+mark {
+    background: #fef08a;
+    color: #713f12;
+    padding: 1px 2px;
+    border-radius: 3px;
+}
+
+/* =========================
+   12. FOOTER
+========================= */
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* =========================
+   13. RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+    .container {
+        width: min(100% - 20px, 1000px);
+    }
+
+    .header {
+        padding: 25px 0;
+    }
+
+    .task-form-section,
+    .task-controls {
+        padding: 18px;
+    }
+
+    .control-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .history-controls button {
+        flex: 1;
+    }
+
+    .task-actions button {
+        flex: 1 1 auto;
+    }
+}
+
+/* =========================
+   14. PRINT STYLES
+========================= */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    .header {
+        background: white;
+        color: black;
+        padding: 10px 0;
+    }
+
+    .task-form-section,
+    .history-controls,
+    .task-actions,
+    .footer,
+    .task-controls > .form-group,
+    .control-row {
+        display: none !important;
+    }
+
+    .task-controls {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .task-item {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+}

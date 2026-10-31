@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A JavaScript task management application with search, filtering, sorting, and persistent storage."
+    >
+
+    <title>Task Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Task Manager</h1>
+            <p>Organize your work. Track your progress.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="task-form-section">
+            <h2>Create a Task</h2>
+
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Task Title</label>
+                    <input
+                        type="text"
+                        id="task-title"
+                        name="title"
+                        placeholder="Enter task title"
+                        maxlength="120"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea
+                        id="task-description"
+                        name="description"
+                        placeholder="Enter task description"
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-priority">Priority</label>
+
+                    <select id="task-priority" name="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submit-task">
+                    Add Task
+                </button>
+
+                <button type="button" id="cancel-edit" hidden>
+                    Cancel Edit
+                </button>
+            </form>
+        </section>
+
+        <section class="task-controls">
+            <h2>Your Tasks</h2>
+
+            <div class="form-group">
+                <label for="search-input">Search Tasks</label>
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search by title or description"
+                >
+            </div>
+
+            <div class="control-row">
+                <div class="form-group">
+                    <label for="status-filter">Filter</label>
+
+                    <select id="status-filter">
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sort-select">Sort By</label>
+
+                    <select id="sort-select">
+                        <option value="created-desc">Newest First</option>
+                        <option value="created-asc">Oldest First</option>
+                        <option value="title-asc">Title A–Z</option>
+                        <option value="priority-desc">Priority</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="history-controls">
+                <button type="button" id="undo-button" disabled>
+                    Undo
+                </button>
+
+                <button type="button" id="redo-button" disabled>
+                    Redo
+                </button>
+            </div>
+
+            <p id="task-summary" aria-live="polite">
+                No tasks yet.
+            </p>
+
+            <p id="app-message" role="status" aria-live="polite"></p>
+
+            <ul id="task-list" aria-label="Task list"></ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>JavaScript Task Manager | Built with HTML, CSS and JavaScript</p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
